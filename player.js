@@ -13,11 +13,11 @@
     audio: {
       setMute: function() {
         videoEl.muted = true;
-        muteButton.innerHTML = "Unmute";
+        muteButton.innerHTML = '<img src="images/mute.gif">';
       },
       setUnmute: function() {
         videoEl.muted = false;
-        muteButton.innerHTML = "Mute";
+        muteButton.innerHTML = '<img src="images/unmute.gif">';
       },
       setVolume: function() {
         videoEl.volume = volumeBar.value;
@@ -66,10 +66,10 @@
     togglePlay: function() {
       if (videoEl.paused === true) {
         playerUtils.play();
-        playButton.innerHTML = "Pause";
+        playButton.innerHTML = '<img src="images/pause.gif">';
       } else {
         playerUtils.pause();
-        playButton.innerHTML = "Play";
+        playButton.innerHTML = '<img src="images/play.gif">';
       }
     },
     video: {
