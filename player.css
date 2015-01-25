@@ -1,0 +1,107 @@
+.video-container {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.video-container, .video-container * {
+  box-sizing: border-box;
+}
+
+.video-frame {
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  -moz-transition: opacity .3s;
+  -o-transition: opacity .3s;
+  -ms-transition: opacity .3s;
+  transition: opacity .3s;
+  background-image: linear-gradient(bottom, rgb(61,64,59) 13%, rgb(61,64,59) 100%);
+  background-image: -o-linear-gradient(bottom, rgb(61,64,59) 13%, rgb(61,64,59) 100%);
+  background-image: -moz-linear-gradient(bottom, rgb(61,64,59) 13%, rgb(61,64,59) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgb(61,64,59) 13%, rgb(61,64,59) 100%);
+  background-image: -ms-linear-gradient(bottom, rgb(61,64,59) 13%, rgb(61,64,59) 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.13, rgb(61,64,59)), color-stop(1, rgb(61,64,59))
+  );
+}
+
+.video-container:hover .video-controls {
+  opacity: .9;
+}
+
+.video-seek-bar {
+  border-bottom: 1px solid #333;
+}
+
+.seek-bar {
+  width: 100%;
+  margin: 0;
+}
+
+.video-control-bar {
+  padding: 2px 5px 5px 5px;
+  vertical-align: middle;
+  line-height: 24px;
+  border-top: 1px solid #444;
+}
+.video-control-bar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.left{
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.volume-bar {
+  width: 60px;
+  margin: 0;
+  vertical-align: middle;
+  display: none;
+}
+
+.volume-control {
+  display: inline-block;
+}
+
+.volume-control:hover .volume-bar {
+  display: inline-block;
+}
+
+.time {
+  padding-left: 10px;
+  font: -webkit-small-control;
+  color: #aaa;
+}
+
+.current {
+  color: #fff;
+}
+
+button {
+  background: rgba(0,0,0,.5);
+  border: 0;
+  color: #EEE;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  height: 21px;
+}
+
+button:hover {
+  cursor: pointer;
+}
