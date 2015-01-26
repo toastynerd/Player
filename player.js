@@ -1,4 +1,4 @@
-;(function() {
+;(function(bindTo) {
   //TODO only require a single getElementById
   var el = document.getElementById("video-id"),
       videoEl = el.querySelector(".video-frame"),
@@ -10,7 +10,7 @@
       duration = el.querySelector(".duration"),
       current = el.querySelector(".current");
 
-  var playerUtils = new window.PlayerUtils(el);
+  var playerUtils = new bindTo.PlayerUtils(el);
   
   //TODO move these into player_utils
   videoEl.ondurationchange = function() {
@@ -53,4 +53,4 @@
   volumeBar.addEventListener("change", function() {
     playerUtils.audioControls.setVolume();
   });
-})();
+})(window);
