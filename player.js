@@ -1,5 +1,6 @@
 ;(function() {
-  var el = document.getElementById("videoID"),
+  //TODO only require a single getElementById
+  var el = document.getElementById("video-id"),
       videoEl = el.querySelector(".video-frame"),
       playButton = el.querySelector(".play-pause"),
       muteButton = el.querySelector(".mute"),
@@ -9,8 +10,9 @@
       duration = el.querySelector(".duration"),
       current = el.querySelector(".current");
 
-  var playerUtils = new PlayerUtils(el);
+  var playerUtils = new window.PlayerUtils(el);
   
+  //TODO move these into player_utils
   videoEl.ondurationchange = function() {
     playerUtils.setDuration();
   };
@@ -24,7 +26,7 @@
   });
 
   muteButton.addEventListener("click", function() {
-    playerUtils.audio.toggleMute();
+    playerUtils.audioControls.toggleMute();
   });
 
   fullScreenButton.addEventListener("click", function() {
@@ -49,6 +51,6 @@
   });
 
   volumeBar.addEventListener("change", function() {
-    playerUtils.audio.setVolume();
+    playerUtils.audioControls.setVolume();
   });
 })();
