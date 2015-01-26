@@ -21,7 +21,7 @@
   };
 
   AudioControls.prototype.toggleMute = function() {
-    videlEl.muted ? this.unmute() : this.mute();
+    this.el.muted ? this.unmute() : this.mute();
   };
 
   //not sold on this yet

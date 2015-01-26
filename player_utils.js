@@ -57,5 +57,5 @@
     }
   }
 
-  bindTo.PlayUtils = PlayerUtils;
+  bindTo.PlayerUtils = PlayerUtils;
 })(window);
