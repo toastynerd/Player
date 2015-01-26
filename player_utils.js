@@ -1,19 +1,21 @@
 ;(function(bindTo) {
   var PlayerUtils = function(el) {
     this.el = el;
+    this.videoEl = this.el.querySelector('.video-frame');
     this.duration = this.el.querySelector('.duration');
     this.seekBar = this.el.querySelector('.seek-bar');
-    this.playButton = this.el.querySelector('play-pause');
-    this.audioControls = new bindTo.AudioControls(el);
-    this.video = new bindTo.Video(el);
+    this.playButton = this.el.querySelector('.play-pause');
+    this.current = this.el.querySelector('.current');
+    this.audioControls = new bindTo.AudioControls(this.el);
+    this.video = new bindTo.Video(this.videoEl);
   };
 
   PlayerUtils.prototype.pause = function() {
-    this.el.pause();
+    this.videoEl.pause();
   };
 
   PlayerUtils.prototype.play = function() {
-    this.el.play();
+    this.videoEl.play();
   };
 
   PlayerUtils.prototype.generateTimestamp = function(timestamp) {
@@ -32,23 +34,23 @@
 
   PlayerUtils.prototype.setDuration = function() {
     //here's some more storage repitition that should be removed
-    this.duration.innerHTML = this.generateTimestamp(this.el.duration);
+    this.duration.innerHTML = this.generateTimestamp(this.videoEl.duration || 0);
   };
 
   PlayerUtils.prototype.setPlayerCurrentTime = function() {
-    this.el.currentTime = this.el.duration * (this.seekBar.value / 100);
+    this.videoEl.currentTime = (this.videoEl.duration || 0) * (this.seekBar.value / 100);
   };
 
   PlayerUtils.prototype.setPlayerCurrentTimestamp = function() {
-    this.current.innerHTML = this.generateTimestamp(this.el.currentTime);
+    this.current.innerHTML = this.generateTimestamp(this.videoEl.currentTime);
   };
 
   PlayerUtils.prototype.setPlayerSeekBarPosition = function() {
-    this.seekBar.value = (100 / this.el.duration) * this.el.currentTime;
+    this.seekBar.value = (100 / this.videoEl.duration) * this.videoEl.currentTime;
   };
 
   PlayerUtils.prototype.togglePlay = function() {
-    if (this.el.paused === true) {
+    if (this.videoEl.paused === true) {
       this.play();
       this.playButton.innerHTML = '<img src="images/pause.gif">';
     } else {
