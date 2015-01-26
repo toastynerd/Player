@@ -3,7 +3,7 @@
     this.el = el;
   };
 
-  Video.prototype.init = function() {
+  Video.prototype.initFullScreen = function() {
     if (this.el.requestFullscreen) {
       this.el.requestFullscreen();
     } else if (this.el.mozRequestFullScreen) {
