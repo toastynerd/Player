@@ -42,13 +42,24 @@ module.exports = function(grunt) {
     jshint: {
       beforeconcat: ['src/js/audio_controls.js', 'src/js/video.js', 'src/js/player_utils.js', 'src/js/player.js'],
       afterconcat: ['build/js/player.js']
-    }
+    },
+    watch: {
+      css: {
+        files: 'src/scss/*.scss',
+        tasks: ['compass'],
+      },
+      scripts: {
+        files: ['src/js/*.js'],
+        tasks: ['concat:dev']
+      }
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build:dev', ['concat:dev', 'compass']);
   grunt.registerTask('build:production', ['concat:production', 'uglify', 'compass']);
