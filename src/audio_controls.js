@@ -21,5 +21,8 @@ AudioControls.prototype.setVolume = function(value) {
 };
 
 AudioControls.prototype.toggleMute = function() {
-  this.videoEl.muted ? this.unmute() : this.mute();
+  if (this.videoEl.muted)  
+    this.unmute(); 
+  else
+    this.mute();
 };
