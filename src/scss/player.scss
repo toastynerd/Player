@@ -1,0 +1,109 @@
+@import 'compass';
+
+$controls-button-size: 24px
+$controls-light-color: #EEE;
+$controls-mid-color: #AAA;
+$controls-offset: 10px;
+$controls-radius: 5px;
+
+.video-container, .video-container * {
+  box-sizing: border-box;
+}
+
+.video-container {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+
+  &:hover .video-controls {
+    @include opacity(.9);
+  }
+}
+
+.video-frame {
+  max-width: 100%;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: $controls-offset;
+  left: $controls-offset;
+  right: $controls-offset;
+  
+  @include background-image(linear-gradient(#606c88, #3f4c6b));
+  @include border-radius($controls-radius);
+  @include opacity(0);
+  @include transition(opacity .3s);
+}
+
+.seek-bar {
+  width: 100%;
+  margin: 0;
+}
+
+.video-control-bar {
+  padding: 2px $controls-radius $controls-radius $controls-radius;
+  vertical-align: middle;
+  line-height: 24px;
+  border-top: 1px solid #679;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.volume-bar {
+  display: inline-block;
+  width: 0;
+  margin: 0;
+  vertical-align: middle;
+  visibility: hidden;
+  
+  @include transition(width .3s);
+}
+
+.volume-control {
+  display: inline;
+
+  &:hover .volume-bar {
+    visibility: visible;
+    width: 60px;
+    margin-right: 4px;
+  }
+}
+
+.time {
+  font-size: 85%;
+  color: $controls-mid-color;
+  -webkit-font-smoothing: antialiased;
+}
+
+.current {
+  color: $controls-light-color;
+}
+
+.p-button {
+  background: rgba(0,0,0,.5);
+  border: 0;
+  color: $controls-light-color;
+  width: $controls-button-size;
+  height: $controls-button-size;
+  cursor: pointer;
+  outline: none;
+
+  @include border-radius(3px);
+
+  img {
+    max-width: 100%;
+  }
+}
