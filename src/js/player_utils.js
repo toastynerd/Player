@@ -5,8 +5,53 @@ var PlayerUtils = function(el) {
   this.seekBar = this.el.querySelector('.seek-bar');
   this.playButton = this.el.querySelector('.play-pause');
   this.current = this.el.querySelector('.current');
+  this.muteButton = this.el.querySelector('.mute');
+  this.fullScreenButton = this.el.querySelector('.full-screen');
+  this.volumeBar = this.el.querySelector('.volume-bar');
   this.audioControls = new AudioControls(this.el);
   this.video = new Video(this.videoEl);
+
+  // setup listeners
+  this.videoEl.ondurationchange = function() {
+    this.setDuration(); 
+  }.bind(this);
+
+  this.playButton.addEventListener('click', function() {
+    this.togglePlay();
+  }.bind(this));
+
+  this.videoEl.addEventListener('click', function() {
+    this.togglePlay(); 
+  }.bind(this));
+
+  this.muteButton.addEventListener('click', function() {
+    this.audioControls.toggleMute();
+  }.bind(this));
+
+  this.fullScreenButton.addEventListener('click', function() {
+    this.video.initFullScreen();
+  }.bind(this));
+
+  this.seekBar.addEventListener('change', function() {
+    this.setPlayerCurrentTime();
+  }.bind(this));
+
+  this.videoEl.addEventListener('timeupdate', function() {
+    this.setPlayerSeekBarPosition();
+    this.setPlayerCurrentTimestamp();
+  }.bind(this));
+
+  this.seekBar.addEventListener('mousedown', function() {
+    this.pause();
+  }.bind(this));
+
+  this.seekBar.addEventListener('mouseup', function() {
+    this.play();
+  }.bind(this));
+
+  this.volumeBar.addEventListener('change', function() {
+    this.audioControls.setVolume();
+  }.bind(this));
 };
 
 PlayerUtils.prototype.pause = function() {
