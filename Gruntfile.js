@@ -53,6 +53,14 @@ module.exports = function(grunt) {
         tasks: ['concat:dev']
       }
     },
+    mocha: {
+      test: {
+        src: ['test/test.html'],
+        options: {
+          run: true
+        }
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -60,9 +68,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mocha');
 
-  grunt.registerTask('build:dev', ['concat:dev', 'compass']);
+  grunt.registerTask('build:dev', ['concat:dev']);
   grunt.registerTask('build:production', ['concat:production', 'uglify', 'compass']);
   grunt.registerTask('default', ['build:dev']);
   grunt.registerTask('production', ['build:production']);
+  grunt.registerTask('test', ['jshint', 'mocha']);
 };

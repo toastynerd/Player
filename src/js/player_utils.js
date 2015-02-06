@@ -101,4 +101,4 @@ PlayerUtils.prototype.togglePlay = function() {
     this.pause();
     this.playButton.innerHTML = '<img src="images/play.gif">';
   }
-}
+};
